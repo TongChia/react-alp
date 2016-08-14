@@ -1,0 +1,59 @@
+.button
+  display inline-block
+  background accentColor1
+  color invertTextColor
+  text-decoration none
+  text-align center
+  margin 0.4rem 0.2rem
+  padding 0 .6em
+  line-height 2.2
+  border 1px solid transparent
+  border-radius 4px
+  font-size 1.2rem
+
+  &.outline
+    border-color accentColor1
+    background transparent
+    color accentColor1
+
+  &.clear
+    color textColor
+    background transparent
+
+  &.round
+    border-radius 100%
+
+  &.block
+    display block
+    margin-left 0.5rem
+    margin-right 0.5rem
+
+  &.full
+    border-radius 0
+    width 100%
+    display block
+
+  &:focus
+    outline none
+
+  .icon
+    display inline-block
+    margin-right .3rem
+    font-size 1.2rem
+    vertical-align middle
+
+.button.icon-top
+  font-size .7rem
+  .icon
+    margin-right 0
+    width 100%
+    font-size 2rem
+    line-height 1rem
+
+.paper .button.block
+  margin-left 0
+  margin-right 0
+
+.paper .button.full
+  margin-left -.5rem
+  margin-right -.5rem

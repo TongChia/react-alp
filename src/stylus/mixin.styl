@@ -1,0 +1,37 @@
+screen-xs()
+  @media screen and (max-width: 543px)
+    {block}
+
+screen-sm()
+  @media screen and (min-width: 544px)
+    {block}
+
+screen-md()
+  @media screen and (min-width: 768px)
+    {block}
+
+screen-lg()
+  @media screen and (min-width: 992px)
+    {block}
+
+screen-xl()
+  @media screen and (min-width: 1200px)
+    {block}
+
+print-A4()
+  @media print
+    {block}
+
+
+// auto text color
+autoTextColor(background, textColor = textColor, invertTextColor = invertTextColor)
+  if dark(background)
+    if dark(invertTextColor)
+      color textColor
+    else
+      color invertTextColor
+  else
+    if dark(textColor)
+      color textColor
+    else
+      color invertTextColor

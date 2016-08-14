@@ -1,0 +1,55 @@
+.list
+  list-style none
+  padding 0
+  margin 0
+
+.paper>.list
+  margin-left -.5rem
+  margin-right -.5rem
+  &:last-child
+    margin-bottom -.5rem
+  &:first-child
+    margin-top -.5rem
+
+.list>.item
+  padding 1rem
+  margin-left 0
+  border-bottom 1px solid rgba(textColor, .2)
+  line-height 1.5rem
+
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+
+  display flex
+
+  .item-inner
+    flex 1
+
+    .label
+      width 100%
+      font-size 1rem
+      font-weight 400
+      margin 0
+      vertical-align top
+
+  &:last-child
+    border-bottom-color transparent
+
+  &.item-icon
+    .icon
+      vertical-align middle
+    .icon:first-child
+      font-size 1.5rem
+      margin-right 1rem
+      width 1.5rem
+      height 1.5rem
+
+  &.item-avatar
+    height 3.5rem
+    .avatar
+      width 3.5rem
+      height 3.5rem
+
+.list.no-line>.item
+  border-bottom-color transparent

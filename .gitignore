@@ -1,0 +1,11 @@
+logs
+*.log
+
+coverage
+node_modules
+build/
+dist/
+
+# IntelliJ
+.idea
+*.iml

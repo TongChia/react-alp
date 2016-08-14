@@ -1,0 +1,17 @@
+{
+  "presets": [
+    "es2015",
+    "react",
+    "airbnb",
+    "stage-1"
+  ],
+  "plugins": [
+    "transform-class-properties",
+    ["transform-es2015-classes", { "loose": true }],
+    "transform-decorators-legacy",
+    "transform-object-rest-spread",
+    ["transform-es2015-spread", { "loose": true }],
+    ["transform-es2015-destructuring", { "loose": true }],
+    ["transform-react-remove-prop-types"]
+  ]
+}
