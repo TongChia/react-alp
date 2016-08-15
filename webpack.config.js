@@ -1,31 +1,114 @@
-/* eslint no-console: "off" */
-const webpackConfigs = require('./conf/webpack');
-const defaultConfig = 'dev';
+var webpack = require('webpack');
+var path = require('path');
 
-module.exports = (configName) => {
+var srcPath = path.resolve(__dirname, './src');
+var docPath = path.resolve(__dirname, './docs');
 
-  // If there was no configuration give, assume default
-  const requestedConfig = configName || defaultConfig;
-
-  // Return a new instance of the webpack config
-  // or the default one if it cannot be found.
-  let LoadedConfig = defaultConfig;
-
-  if (webpackConfigs[requestedConfig] !== undefined) {
-    LoadedConfig = webpackConfigs[requestedConfig];
-  } else {
-    console.warn(`
-      Provided environment "${configName}" was not found.
-      Please use one of the following ones:
-      ${Object.keys(webpackConfigs).join(' ')}
-    `);
-    LoadedConfig = webpackConfigs[defaultConfig];
+module.exports = {
+  context: docPath,
+  debug: false,
+  devtool: 'cheap-module-source-map',
+  devServer: {
+    contentBase: './docs/',
+    publicPath: '/assets/',
+    historyApiFallback: true,
+    hot: true,
+    inline: true,
+    port: 8080
+  },
+  entry: [
+    'webpack-dev-server/client?http://0.0.0.0:8080/',
+    'webpack/hot/only-dev-server',
+    './index.js'
+  ],
+  module: {
+    loaders: [
+      {
+        test: /\.cssmodule\.css$/,
+        loaders: [
+          'style',
+          'css?modules&importLoaders=1&localIdentName=[name]-[local]-[hash:base64:5]'
+        ]
+      },
+      {
+        test: /^.((?!cssmodule).)*\.css$/,
+        loaders: [
+          'style',
+          'css'
+        ]
+      },
+      {
+        test: /\.(sass|scss)$/,
+        loaders: [
+          'style',
+          'css',
+          'sass'
+        ]
+      },
+      {
+        test: /\.less$/,
+        loaders: [
+          'style',
+          'css',
+          'less'
+        ]
+      },
+      {
+        test: /\.styl$/,
+        loaders: [
+          'style',
+          'css',
+          'stylus'
+        ]
+      },
+      {
+        test: /\.(png|jpg|gif|mp4|ogg|svg|woff|woff2)$/,
+        loaders: ['file']
+      },
+      {
+        test: /\.json$/,
+        loaders: 'json'
+      },
+      {
+        test: /\.(js|jsx)$/,
+        include: [
+          srcPath,
+          docPath
+        ],
+        loaders: [
+          'react-hot',
+          'babel'
+        ]
+      }
+    ]
+  },
+  output: {
+    path: '/Users/tongchia/WorkSpaces/OpenProjects/react-alp/dist/assets',
+    filename: 'app.js',
+    publicPath: './assets/'
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
+  ],
+  resolve: {
+    alias: {
+      components: path.join(srcPath, 'components/'),
+      stylus: path.join(srcPath, 'stylus/')
+    },
+    extensions: [
+      '',
+      '.js',
+      '.jsx'
+    ],
+    modules: [
+      srcPath,
+      'node_modules'
+    ]
+  },
+  stylus: {
+    import: [
+      path.join(srcPath, 'stylus/index.styl')
+    ]
   }
-
-  const loadedInstance = new LoadedConfig();
-
-  // Set the global environment
-  process.env.NODE_ENV = loadedInstance.env;
-
-  return loadedInstance.config;
-};
+}
