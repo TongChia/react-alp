@@ -1,6 +1,7 @@
 import React from 'react';
 
-import Appbar from 'components/Appbar/bundle.js';
+import Appbar from 'components/Appbar';
+import 'components/Appbar/Appbar.styl';
 
 export default function Home() {
   return (
