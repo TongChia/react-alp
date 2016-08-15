@@ -1,4 +1,4 @@
-import React, { PropTypes as types, isValidElement } from 'react';
+import React, { PropTypes as types } from 'react';
 import cx from 'classnames';
 import ToolBar, { ToolbarTittle, ToolbarGroup } from '../Toolbar';
 import Button from '../Button';
@@ -10,19 +10,19 @@ const styles = {
   }
 };
 
-export default function Appbar({ backButton, menuButton, leftButtons, rightButtons,
-  title, fixed, className, style, ...others }) {
+export default function Appbar({ back, menu, lefts, rights, title, fixed,
+  className, style, ...others }) {
   if (fixed) styles.root.position = 'fixed';
   // if (context.platform) {
   //   //console.log('Appbar: ', context.platform)
   // }
 
   /* eslint no-param-reassign: 0 */
-  if (backButton === true) backButton = <Button clear label="Back" />;
-  if (typeof backButton === 'string') backButton = <Button clear label={backButton} />;
+  if (back === true) back = <Button clear label="Back" />;
+  if (typeof back === 'string') back = <Button clear label={back} />;
 
-  if (menuButton === true) menuButton = <Button clear label="menu" />;
-  if (typeof menuButton === 'string') menuButton = <Button clear label={menuButton} />;
+  if (menu === true) menu = <Button clear label="menu" />;
+  if (typeof menu === 'string') menu = <Button clear label={menu} />;
 
   return (
     <ToolBar
@@ -35,12 +35,12 @@ export default function Appbar({ backButton, menuButton, leftButtons, rightButto
         style={styles.title}
       />
       <ToolbarGroup>
-        {backButton}
-        {menuButton}
-        {leftButtons}
+        {back}
+        {menu}
+        {lefts}
       </ToolbarGroup>
       <ToolbarGroup stand="right">
-        {rightButtons}
+        {rights}
       </ToolbarGroup>
     </ToolBar>
   );

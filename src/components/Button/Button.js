@@ -2,17 +2,24 @@ import React, { PropTypes as types } from 'react';
 import createFragment from 'react-addons-create-fragment';
 import cx from 'classnames';
 
-export default function Button({ children, className, style, href, label, linkTo, icon, outline, clear, round, block, full, direction, ...others}) {
+export default function Button({ children, className, style,
+  href, label, linkTo, icon, outline, clear, round, block, full, direction, ...others }) {
   const props = {
     href,
-    className: cx('alp-button', {outline, clear, round, block, full}, `icon-${direction}`, className),
+    className: cx(
+      'alp-button',
+      { outline, clear, round, block, full },
+      `icon-${direction}`, className),
     style: Object.assign({}, style),
     ...others
   };
-  icon = icon?React.cloneElement(icon, {className: cx(icon.props.className, 'icon')}):null;
-  const childrens = createFragment({icon, label, children});
+  /* eslint no-param-reassign: 0 */
+  icon = icon ?
+    React.cloneElement(icon, { className: cx(icon.props.className, 'icon') }) : null;
+  const childrens = createFragment({ icon, label, children });
 
   if (linkTo) {
+    /* eslint global-require: 0 */
     const Link = require('react-router/lib/Link.js');
     return <Link to={linkTo} children={childrens} {...props} />;
   }

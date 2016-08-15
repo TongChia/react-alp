@@ -1,4 +1,4 @@
-import React, {PropTypes as types} from 'react';
+import React, { PropTypes as types } from 'react';
 import cx from 'classnames';
 
 export default function ToolBar({ className, children, style, fixed, ...others }) {
