@@ -1,4 +1,4 @@
-.layout
+.alp-layout
   position absolute
   top 0
   bottom 0
@@ -8,10 +8,12 @@
   color textColor
   background #efefef
 
-  margin-top toolbarHeight
-  margin-bottom tabsHeight
-
   overflow-x hidden
   overflow-y auto
 
   transition margin-top .2s ease, margin-bottom .2s ease
+
+  &.has-header
+    margin-top appbarHeight
+  &.has-tabs
+    margin-bottom tabsHeight

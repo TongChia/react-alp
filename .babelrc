@@ -6,6 +6,7 @@
     "stage-1"
   ],
   "plugins": [
+    "transform-decorators-legacy",
     "transform-class-properties",
     ["transform-es2015-classes", { "loose": true }],
     "transform-decorators-legacy",

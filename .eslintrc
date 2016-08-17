@@ -9,16 +9,13 @@
   "rules": {
     "comma-dangle": 0,
     "padded-blocks": 0,
-    "react/prefer-stateless-function": 0,
+    "object-curly-spacing": 0,
+    "react/prefer-stateless-function": 1,
     "react/prop-types": 1,
     "no-underscore-dangle": [ "error", { "allowAfterThis": true }],
     "import/no-unresolved": [ "error", "ignore": [
-      'config',
       'components/',
-      'stores/',
-      'actions/',
-      'sources/',
-      'styles/',
+      'stylus/',
       'images/'
     ]]
   }

@@ -1,12 +1,15 @@
-import React, { PropTypes, Component } from 'react';
+import React, { PropTypes as types, Component } from 'react';
 import cx from 'classnames';
 
 export default class Avatar extends Component {
   static propTypes = {
-    round: PropTypes.bool,
-    img: PropTypes.element,
-    src: PropTypes.string,
-    broken: PropTypes.func
+    round: types.bool,
+    img: types.element,
+    src: types.string,
+    broken: types.func,
+    className: types.string,
+    children: types.node,
+    style: types.object,
   };
 
   static defaultProps = {
@@ -23,6 +26,7 @@ export default class Avatar extends Component {
   }
 
   render() {
+    /* eslint no-unused-vars: 0 */
     const { className, style, children, round, src, img, broken, size, ...others } = this.props;
     const $style = size ? {
       width: size,

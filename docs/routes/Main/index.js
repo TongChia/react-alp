@@ -1,9 +1,12 @@
 import React from 'react';
+import Layout from 'components/Layout';
+import Appbar from 'components/Appbar';
 
-export default function Main ({children}) {
+export default function Main({ children }) {
   return (
-    <div className="layout">
+    <Layout>
       {children}
-    </div>
-  )
+      <Appbar title="Home" />
+    </Layout>
+  );
 }
