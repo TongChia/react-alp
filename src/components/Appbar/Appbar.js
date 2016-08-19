@@ -69,10 +69,12 @@ export default class Appbar extends Component {
         style={Object.assign({}, style, styles.root)}
         {...others}
       >
-        <ToolbarTittle title={title} />
         <ToolbarGroup>
           {back}
           {menu}
+        </ToolbarGroup>
+        <ToolbarTittle title={title} />
+        <ToolbarGroup>
           {lefts}
         </ToolbarGroup>
         <ToolbarGroup stand="right">

@@ -1,12 +1,12 @@
-.button
+.alp-button
   display inline-block
   background accentColor1
-  color invertTextColor
+  color textInvertColor
   text-decoration none
   text-align center
-  margin 0.4rem 0.2rem
-  padding 0 .6em
-  line-height 2.2
+  margin gutterMini (gutterMini / 2)
+  padding 0 gutterMini
+  line-height 2
   border 1px solid transparent
   border-radius 4px
   font-size 1.2rem
@@ -25,8 +25,8 @@
 
   &.block
     display block
-    margin-left 0.5rem
-    margin-right 0.5rem
+    margin-left gutterMini
+    margin-right gutterMini
 
   &.full
     border-radius 0
@@ -42,18 +42,18 @@
     font-size 1.2rem
     vertical-align middle
 
-.button.icon-top
+.alp-button.icon-top
   font-size .7rem
-  .icon
+  .alp-icon, .icon
     margin-right 0
     width 100%
-    font-size 2rem
+    font-size iconSize
     line-height 1rem
 
-.paper .button.block
+.paper .alp-button.block
   margin-left 0
   margin-right 0
 
-.paper .button.full
-  margin-left -.5rem
-  margin-right -.5rem
+.paper .alp-button.full
+  margin-left - gutterMini
+  margin-right - gutterMini

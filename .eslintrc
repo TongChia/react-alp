@@ -9,7 +9,7 @@
   "rules": {
     "comma-dangle": 0,
     "padded-blocks": 0,
-    "object-curly-spacing": 0,
+    "object-curly-spacing": 1,
     "react/prefer-stateless-function": 1,
     "react/prop-types": 1,
     "no-underscore-dangle": [ "error", { "allowAfterThis": true }],

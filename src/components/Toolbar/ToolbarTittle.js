@@ -4,12 +4,12 @@ import cx from 'classnames';
 export default function ToolbarTitle({ title, className, style, children, ...others }) {
   /* eslint no-param-reassign: 0 */
   title = React.isValidElement(title) ?
-    React.cloneElement(title, { className: cx('alp-title', title.props.className) }) :
-    React.createElement('h2', { className: 'alp-title' }, title);
+    React.cloneElement(title, { className: cx('alp-title-inner', title.props.className) }) :
+    React.createElement('h2', { className: 'alp-title-inner' }, title);
 
   return (
     <div
-      className={cx('alp-title-inner', className)}
+      className={cx('alp-title', className)}
       style={Object.assign({}, style)}
       {...others}
     >

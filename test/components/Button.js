@@ -1,18 +1,18 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import App from 'components/App';
+import Button from 'components/Button';
 
-describe('<App />', () => {
+describe('<Button />', () => {
 
   let component;
   beforeEach(() => {
-    component = shallow(<App />);
+    component = shallow(<Button />);
   });
 
   describe('when rendering the component', () => {
 
     it('should have a className of "index"', () => {
-      expect(component.hasClass('index')).to.equal(true);
+      expect(component.hasClass('alp-button')).to.equal(true);
     });
   });
 });

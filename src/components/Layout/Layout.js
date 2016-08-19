@@ -74,7 +74,7 @@ export default class Layout extends Component {
     return (
       <div
         className={classNames('alp-layout',
-          {'has-header': this.state.hasHeader, 'has-tabs': this.state.hasTabs},
+          { 'has-header': this.state.hasHeader, 'has-tabs': this.state.hasTabs },
           this.platform.toLowerCase(), className)}
         style={Object.assign({}, style)}
         {...others}
