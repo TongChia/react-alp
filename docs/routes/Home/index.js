@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from 'components/Button';
 import { Link } from 'react-router';
-import Icon from 'components/Icon';
+import Icon, { Menu, ArrowBack } from 'components/Icon';
 
 export default function Home() {
   return (
@@ -14,6 +14,10 @@ export default function Home() {
       <Icon size={24}>
         <i>a</i>
       </Icon>
+      <Menu />
+      <ArrowBack />
+
+      <Button icon={<Menu />} />
     </div>
   );
 }

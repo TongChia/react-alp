@@ -20,9 +20,10 @@ const Icon = ({ className, style, children, size, src, alt, color, ...others }) 
     }
   }
 
+  // window.console.log(children);
   if (src) {
     classNames.push('alp-icon-img');
-    children = <img alt={alt || 'imange'} {...childrenProps} />;
+    children = <img alt={alt || 'imange'} src={src} {...childrenProps} />;
   } else if (children && children.type === 'svg') {
     classNames.push('alp-icon-svg');
     if (color) { childrenProps.fill = color; }

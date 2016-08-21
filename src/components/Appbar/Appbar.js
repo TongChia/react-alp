@@ -3,7 +3,8 @@ import cx from 'classnames';
 import Toolbar from '../Toolbar/Toolbar';
 import ToolbarTittle from '../Toolbar/ToolbarTittle';
 import ToolbarGroup from '../Toolbar/ToolbarGroup';
-// import Button from '../Button';
+import Button from '../Button';
+import { ArrowBack } from '../Icon';
 
 const styles = {
   root: {
@@ -57,7 +58,7 @@ export default class Appbar extends Component {
     if (fixed) styles.root.position = 'fixed';
 
     /* eslint no-param-reassign: 0 */
-    // if (back === true) back = <Button clear label="Back" />;
+    const $back = back === true ? <Button clear icon={<ArrowBack />} /> : back;
     // if (typeof back === 'string') back = <Button clear label={back} />;
     //
     // if (menu === true) menu = <Button clear label="menu" />;
@@ -69,17 +70,17 @@ export default class Appbar extends Component {
         style={Object.assign({}, style, styles.root)}
         {...others}
       >
-        <ToolbarGroup>
-          {back}
-          {menu}
-        </ToolbarGroup>
-        <ToolbarTittle title={title} />
-        <ToolbarGroup>
-          {lefts}
-        </ToolbarGroup>
         <ToolbarGroup stand="right">
           {rights}
         </ToolbarGroup>
+        <ToolbarGroup>
+          {$back}
+          {menu}
+        </ToolbarGroup>
+        <ToolbarGroup>
+          {lefts}
+        </ToolbarGroup>
+        <ToolbarTittle title={title} />
       </Toolbar>
     );
   }
