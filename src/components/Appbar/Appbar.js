@@ -3,8 +3,8 @@ import cx from 'classnames';
 import Toolbar from '../Toolbar/Toolbar';
 import ToolbarTittle from '../Toolbar/ToolbarTittle';
 import ToolbarGroup from '../Toolbar/ToolbarGroup';
-import Button from '../Button';
-import { ArrowBack } from '../Icon';
+import Button, { ButtonGroup } from '../Button';
+import { ArrowBack, Menu } from '../Icon';
 
 const styles = {
   root: {
@@ -21,10 +21,16 @@ export default class Appbar extends Component {
     style: types.object,
     title: types.element,
     fixed: types.bool,
-    back: types.any,
-    menu: types.any,
-    lefts: types.any,
-    rights: types.any
+    back: types.oneOfType([
+      types.bool,
+      types.element
+    ]),
+    menu: types.oneOfType([
+      types.bool,
+      types.element
+    ]),
+    lefts: types.element,
+    rights: types.element
   };
 
   static defaultProps = {
@@ -58,10 +64,10 @@ export default class Appbar extends Component {
     if (fixed) styles.root.position = 'fixed';
 
     /* eslint no-param-reassign: 0 */
-    const $back = back === true ? <Button clear icon={<ArrowBack />} /> : back;
+    const backButton = back === true ? <Button icon={<ArrowBack />} /> : back;
     // if (typeof back === 'string') back = <Button clear label={back} />;
-    //
-    // if (menu === true) menu = <Button clear label="menu" />;
+
+    const menuButton = menu === true ? <Button icon={<Menu />} /> : menu;
     // if (typeof menu === 'string') menu = <Button clear label={menu} />;
 
     return (
@@ -73,14 +79,16 @@ export default class Appbar extends Component {
         <ToolbarGroup stand="right">
           {rights}
         </ToolbarGroup>
+        <ToolbarTittle title={title} />
         <ToolbarGroup>
-          {$back}
-          {menu}
+          <ButtonGroup clear>
+            {backButton}
+            {menuButton}
+          </ButtonGroup>
         </ToolbarGroup>
         <ToolbarGroup>
           {lefts}
         </ToolbarGroup>
-        <ToolbarTittle title={title} />
       </Toolbar>
     );
   }

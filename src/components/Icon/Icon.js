@@ -2,7 +2,6 @@ import React, { PropTypes as types } from 'react';
 import cx from 'classnames';
 
 const Icon = ({ className, style, children, size, src, alt, color, ...others }) => {
-
   const classNames = ['alp-icon', className];
   const childrenProps = {};
 

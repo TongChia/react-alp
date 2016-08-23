@@ -9,7 +9,7 @@ var srcPath = path.resolve(__dirname, '../src')
   , componentsPath = path.join(srcPath, 'components')
   , buildComponentsPath = path.join(buildPath, 'components')
   , stylusPath = path.join(srcPath, 'stylus')
-  , buildStylusIndex = path.join(buildPath, 'stylus/index.styl')
+  , buildStylusIndex = path.join(buildPath, 'stylus/react-alp.styl')
   , buildCSSPath = path.join(buildPath, 'css')
   , babel = path.resolve(__dirname, '../node_modules/.bin/babel')
   , tmp = tempdir();
@@ -47,10 +47,10 @@ cp('-Rf', path.join(srcPath, 'resources'), path.join(buildPath));
 
 var index_styl = '';
 
-var component_index_styl_template =
-  '@import \"../../stylus/theme.styl\"\r' +
-  '@import \"../../stylus/mixin.styl\"\r' +
-  '@import \"../../stylus/global.styl\"\r\r';
+// var component_index_styl_template =
+//   '@import \"../../stylus/theme.styl\"\r' +
+//   '@import \"../../stylus/mixin.styl\"\r' +
+//   '@import \"../../stylus/global.styl\"\r\r';
 
 /**
  * 遍历组件
@@ -59,22 +59,22 @@ ls(componentsPath).forEach(function(component) {
   var component_path = path.join(componentsPath, component);
   var build_component_path = path.join(buildComponentsPath, component);
 
-  var component_index_styl = component_index_styl_template;
-  var build_component_index_styl_path = path.join(build_component_path, 'index.styl');
+  // var component_index_styl = component_index_styl_template;
+  // var build_component_index_styl_path = path.join(build_component_path, 'index.styl');
 
   // 遍历组件样式文件
   ls(path.join(component_path, '*.styl')).forEach(function(styl) {
 
     // 添加组件样式文件的相对路径
+    cp('-Rf', styl, build_component_path);
     if (!/index.styl/.test(styl)) {
-      cp('-Rf', styl, build_component_path);
       index_styl += "@import \"" + path.relative(stylusPath, styl) + "\"\r";
-      component_index_styl += "@import \"" + path.relative(component_path, styl) + "\"\r";
+      // component_index_styl += "@import \"" + path.relative(component_path, styl) + "\"\r";
     }
   });
 
   // 写入文件 component/index.styl
-  fs.writeFileSync(build_component_index_styl_path, component_index_styl);
+  // fs.writeFileSync(build_component_index_styl_path, component_index_styl);
 });
 
 // 添加<组件样式>到 stylus/index.styl

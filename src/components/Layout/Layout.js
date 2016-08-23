@@ -3,18 +3,6 @@ import classNames from 'classnames';
 import { os } from '../../utility/ua-test';
 import EventEmitter from 'events';
 
-// export const layoutEvents = Object.assign({}, EventEmitter.prototype, {
-//   onHeaderChange: (event, val) => {
-//     if (typeof val === 'function') {
-//       window.console.log('注册事件');
-//       this.addListener(event, val);
-//     } else {
-//       window.console.log('发射');
-//       this.emit(event, val);
-//     }
-//   }
-// });
-
 class LayoutEvents extends EventEmitter {
   onHeaderChange(event, val) {
     if (typeof val === 'function') {
@@ -33,7 +21,7 @@ export default class Layout extends Component {
     className: types.string,
     children: types.node,
     style: types.object,
-    forcePlatform: types.oneOf(['iOS', 'Android'])
+    forcePlatform: types.oneOf(['iOS', 'Android', 'winPhone', 'Web'])
   };
 
   static childContextTypes = {

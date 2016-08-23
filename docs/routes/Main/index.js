@@ -1,15 +1,18 @@
 import React from 'react';
 import Layout from 'components/Layout';
 import Appbar from 'components/Appbar';
-import Button, { ButtonGroup } from 'components/Button';
+import Button from 'components/Button';
+import Fragment from 'components/Fragment';
 
-export default function Main({ children }) {
-  const lefts = <ButtonGroup><Button>菜单</Button><Button>查找</Button></ButtonGroup>;
-  const rights = <div><Button clear label="查找"/></div>;
+export default function Main({ children, subPage }) {
+  const rights = <div><Button clear label="查找" /></div>;
   return (
     <Layout>
       {children}
-      <Appbar title="Home" lefts={lefts} rights={rights} back={true} />
+      <Fragment action={'slide'} full>
+        {subPage}
+      </Fragment>
+      <Appbar title="Home" rights={rights} back menu />
     </Layout>
   );
 }

@@ -1,12 +1,20 @@
 .alp-icon
-  font-size iconSize
   height iconSize
+  font-size iconSize
   // color iconColor
   display inline-block
   // line-height 1rem
 
   &>svg
+    float left
+    margin-top 4px
     height iconSize
     fill currentcolor
-    float left
-    padding-top 4px
+
+.alp-icon-arrow
+  &.forward>svg
+    transform:rotate(180deg);
+
+.alp-icon-more
+  &.vertical>svg
+    transform:rotate(90deg);

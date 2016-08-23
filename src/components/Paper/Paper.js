@@ -14,10 +14,11 @@ const zDepthShadows = [
 
 const zDepth2styles = (z) => ({ boxShadow: z <= 0 ? 'none' : zDepthShadows[(z < 5 ? z : 5) - 1] });
 
-export default function Paper({ zDepth, className, style, inline, circle, children, ...others }) {
+export default function Paper({ children, className, style,
+  inline, round, circle, zDepth, ...others }) {
   return (
     <div
-      className={classNames('alp-paper', { inline: inline || circle }, { circle }, className)}
+      className={classNames('alp-paper', { inline: inline || circle, round, circle }, className)}
       style={Object.assign({}, style, zDepth2styles(zDepth))}
       {...others}
     >
@@ -36,5 +37,6 @@ Paper.propTypes = {
   children: types.node,
   zDepth: types.number,
   inline: types.bool,
+  round: types.bool,
   circle: types.bool
 };

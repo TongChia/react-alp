@@ -1,22 +1,22 @@
-import React, {createFragment, cloneElement, isValidElement, PropTypes as types} from 'react';
+import React, { createFragment, cloneElement, isValidElement, PropTypes as types } from 'react';
 import cx from 'classnames';
 
-export default function ListItem ({className, style, avatar, icon, label, linkTo, href, onClick, children, ...others}, {router}) {
+export default function ListItem({ className, style, avatar,
+  icon, label, linkTo, onClick, children, ...others }, { router }) {
 
-  const classNames = ['item'];
+  const classNames = ['alp-list-item'];
 
   if (icon) {
-    classNames.push('item-icon');
-    icon = cloneElement(icon, {className: cx(icon.props.className, 'icon')});
-    if (avatar) avatar = undefined
+    classNames.push('alp-list-item-icon');
+    icon = cloneElement(icon, { className: cx(icon.props.className, 'icon') });
   } else if (avatar) {
-    classNames.push('item-avatar');
+    classNames.push('alp-list-item-avatar');
   }
 
   if (typeof label == 'string') {
-    label = (<h2 className="label">{label}</h2> )
+    label = <h2 className="label">{label}</h2>;
   } else if (isValidElement(label)) {
-    label = cloneElement(label, {className: cx(label.props.className, 'label')})
+    label = cloneElement(label, { className: cx(label.props.className, 'label') });
   }
 
   const handleClick = (linkTo&&router) ? () => {
@@ -53,4 +53,4 @@ ListItem.contextTypes = {
   router: types.object
 };
 
-//TODO: return <Link />, <a />
+// TODO: return <Link />, <a />
