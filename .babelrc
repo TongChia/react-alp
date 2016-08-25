@@ -7,7 +7,6 @@
     "transform-decorators-legacy",
     "transform-class-properties",
     ["transform-es2015-classes", { "loose": true }],
-    "transform-decorators-legacy",
     "transform-object-rest-spread",
     ["transform-es2015-spread", { "loose": true }],
     ["transform-es2015-destructuring", { "loose": true }],

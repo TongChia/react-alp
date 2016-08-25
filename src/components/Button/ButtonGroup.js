@@ -1,4 +1,4 @@
-import React, { PropTypes as types } from 'react';
+import React, { PropTypes } from 'react';
 import cx from 'classnames';
 
 const ButtonGroup = ({ className, style, clear, outline, children }, { underToolbar }) => (
@@ -10,18 +10,16 @@ const ButtonGroup = ({ className, style, clear, outline, children }, { underTool
   </div>
 );
 
-ButtonGroup.displayName = 'ButtonGroup';
-
 ButtonGroup.propTypes = {
-  className: types.string,
-  style: types.object,
-  children: types.node,
-  clear: types.bool,
-  outline: types.bool
+  className: PropTypes.string,
+  style: PropTypes.object,
+  children: PropTypes.node,
+  clear: PropTypes.bool,
+  outline: PropTypes.bool
 };
 
 ButtonGroup.contextTypes = {
-  underToolbar: types.bool
+  underToolbar: PropTypes.bool
 };
 
 export default ButtonGroup;

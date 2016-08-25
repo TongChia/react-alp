@@ -1,4 +1,4 @@
-import React, { propTypes as types } from 'react';
+import React, { PropTypes } from 'react';
 import cx from 'classnames';
 import Icon from './Icon';
 
@@ -12,8 +12,8 @@ const ArrowBack = ({ forward, className, ...props }) => (
 );
 
 ArrowBack.propTypes = {
-  className: types.string,
-  forward: types.bool
+  className: PropTypes.string,
+  forward: PropTypes.bool
 };
 
 export default ArrowBack;

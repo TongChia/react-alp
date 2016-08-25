@@ -1,22 +1,18 @@
-import React, { PropTypes as types, Component } from 'react';
+import React, { PropTypes, Component } from 'react';
 import cx from 'classnames';
 
 export default class ToolBar extends Component {
 
   static propTypes = {
-    className: types.string,
-    children: types.node,
-    style: types.object,
-    fixed: types.bool
+    className: PropTypes.string,
+    children: PropTypes.node,
+    style: PropTypes.object,
+    fixed: PropTypes.bool
   };
 
   static childContextTypes = {
-    underToolbar: types.bool
+    underToolbar: PropTypes.bool
   };
-
-  // constructor(props, context) {
-  //   super(props, context);
-  // }
 
   getChildContext() {
     return {
@@ -25,15 +21,10 @@ export default class ToolBar extends Component {
   }
 
   render() {
-    const { className, children, style, fixed, ...others } = this.props;
-    const $style = {
-      //  position: (fixed?'fixed':undefined)
-    };
-    if (fixed) $style.position = 'fixed';
+    const { className, children, ...others } = this.props;
     return (
       <header
         className={cx('alp-toolbar', className)}
-        style={Object.assign({}, style, $style)}
         {...others}
       >
         {children}

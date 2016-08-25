@@ -1,4 +1,4 @@
-import React, { PropTypes as types } from 'react';
+import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 
 const zDepthShadows = [
@@ -32,11 +32,11 @@ Paper.defaultProps = {
 };
 
 Paper.propTypes = {
-  className: types.string,
-  style: types.object,
-  children: types.node,
-  zDepth: types.number,
-  inline: types.bool,
-  round: types.bool,
-  circle: types.bool
+  className: PropTypes.string,
+  style: PropTypes.object,
+  children: PropTypes.node,
+  zDepth: PropTypes.number,
+  inline: PropTypes.bool,
+  round: PropTypes.bool,
+  circle: PropTypes.bool
 };

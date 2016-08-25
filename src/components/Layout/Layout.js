@@ -1,6 +1,6 @@
-import React, { Component, PropTypes as types } from 'react';
+import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
-import { os } from '../../utility/ua-test';
+import Client from '../../utility/client-detect';
 import EventEmitter from 'events';
 
 class LayoutEvents extends EventEmitter {
@@ -15,25 +15,27 @@ class LayoutEvents extends EventEmitter {
 
 export const layoutEvents = new LayoutEvents();
 
+const client = new Client();
+
 export default class Layout extends Component {
 
   static propTypes = {
-    className: types.string,
-    children: types.node,
-    style: types.object,
-    forcePlatform: types.oneOf(['iOS', 'Android', 'winPhone', 'Web'])
+    className: PropTypes.string,
+    children: PropTypes.node,
+    style: PropTypes.object,
+    forcePlatform: PropTypes.oneOf(['iOS', 'Android', 'winPhone', 'Web'])
   };
 
   static childContextTypes = {
-    platform: types.string,
-    onAppbarMount: types.func,
-    onTabsMount: types.func,
-    events: types.object
+    platform: PropTypes.string,
+    onAppbarMount: PropTypes.func,
+    onTabsMount: PropTypes.func,
+    events: PropTypes.object
   };
 
   constructor(props) {
     super(props);
-    this.platform = this.props.forcePlatform || os();
+    this.platform = this.props.forcePlatform || client.platform;
     this.state = {
       hasHeader: false,
       hasTabs: false

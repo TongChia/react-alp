@@ -1,4 +1,4 @@
-import React, { PropTypes as types } from 'react';
+import React, { PropTypes } from 'react';
 import cx from 'classnames';
 
 const Icon = ({ className, style, children, size, src, alt, color, ...others }) => {
@@ -46,19 +46,19 @@ const Icon = ({ className, style, children, size, src, alt, color, ...others }) 
 };
 
 Icon.propTypes = {
-  className: types.string,
-  children: types.node,
-  size: types.oneOfType([
-    types.number,
-    types.shape({
-      width: types.number,
-      height: types.number
+  className: PropTypes.string,
+  children: PropTypes.node,
+  size: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.shape({
+      width: PropTypes.number,
+      height: PropTypes.number
     })
   ]),
-  style: types.object,
-  src: types.string,
-  color: types.string,
-  alt: types.string
+  style: PropTypes.object,
+  src: PropTypes.string,
+  color: PropTypes.string,
+  alt: PropTypes.string
 };
 
 Icon.defaultProps = {

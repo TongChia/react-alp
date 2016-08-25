@@ -1,26 +1,26 @@
-import React, { PropTypes as types, Component } from 'react';
+import React, { PropTypes, Component } from 'react';
 import createFragment from 'react-addons-create-fragment';
 import cx from 'classnames';
 
 export default class Button extends Component {
 
   static propTypes = {
-    className: types.string,
-    children: types.node,
-    style: types.object,
-    label: types.element,
-    direction: types.oneOf(['top', 'left', 'right', 'bottom']),
-    icon: types.element,
-    outline: types.bool,
-    clear: types.bool,
-    round: types.bool,
-    block: types.bool,
-    full: types.bool,
-    href: types.string,
-    onClick: types.func,
-    activeClassName: types.string,
-    active: types.bool,
-    clone: types.any,
+    className: PropTypes.string,
+    children: PropTypes.node,
+    style: PropTypes.object,
+    label: PropTypes.element,
+    direction: PropTypes.oneOf(['top', 'left', 'right', 'bottom']),
+    icon: PropTypes.element,
+    outline: PropTypes.bool,
+    clear: PropTypes.bool,
+    round: PropTypes.bool,
+    block: PropTypes.bool,
+    full: PropTypes.bool,
+    href: PropTypes.string,
+    onClick: PropTypes.func,
+    activeClassName: PropTypes.string,
+    active: PropTypes.bool,
+    clone: PropTypes.any,
   };
 
   render() {

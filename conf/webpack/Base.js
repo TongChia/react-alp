@@ -96,14 +96,7 @@ class WebpackBaseConfig {
         ],
         loaders: [
           {
-            test: /\.cssmodule\.css$/,
-            loaders: [
-              'style',
-              'css?modules&importLoaders=1&localIdentName=[name]-[local]-[hash:base64:5]'
-            ]
-          },
-          {
-            test: /^.((?!cssmodule).)*\.css$/,
+            test: /\.css$/,
             loaders: [
               'style',
               'css'
@@ -159,13 +152,9 @@ class WebpackBaseConfig {
       plugins: [],
       resolve: {
         alias: {
-          actions: `${this.docsPathAbsolute}/actions/`,
           components: `${this.srcPathAbsolute}/components/`,
-          config: `${this.docsPathAbsolute}/config/${this.env}.js`,
-          images: `${this.docsPathAbsolute}/images/`,
-          sources: `${this.docsPathAbsolute}/sources/`,
-          stores: `${this.docsPathAbsolute}/stores/`,
-          styles: `${this.docsPathAbsolute}/styles/`
+          resources: `${this.docsPathAbsolute}/resources/`,
+          stylus: `${this.docsPathAbsolute}/stylus/`
         },
         extensions: ['', '.js', '.jsx'],
         modules: [

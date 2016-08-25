@@ -1,4 +1,4 @@
-import React, { PropTypes as types, Component } from 'react';
+import React, { PropTypes, Component } from 'react';
 import cx from 'classnames';
 import Toolbar from '../Toolbar/Toolbar';
 import ToolbarTittle from '../Toolbar/ToolbarTittle';
@@ -16,59 +16,61 @@ const styles = {
 export default class Appbar extends Component {
 
   static propTypes = {
-    className: types.string,
-    children: types.node,
-    style: types.object,
-    title: types.element,
-    fixed: types.bool,
-    back: types.oneOfType([
-      types.bool,
-      types.element
+    className: PropTypes.string,
+    children: PropTypes.node,
+    style: PropTypes.object,
+    title: PropTypes.element,
+    fixed: PropTypes.bool,
+    back: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.element
     ]),
-    menu: types.oneOfType([
-      types.bool,
-      types.element
+    menu: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.element
     ]),
-    lefts: types.element,
-    rights: types.element
-  };
-
-  static defaultProps = {
-    fixed: true
+    onClickBack: PropTypes.func,
+    onClickMenu: PropTypes.func,
+    lefts: PropTypes.element,
+    rights: PropTypes.element
   };
 
   static contextTypes = {
-    platform: types.string,
-    onAppbarMount: types.func
+    platform: PropTypes.string,
+    onAppbarMount: PropTypes.func,
+    underFragment: PropTypes.bool,
+    router: PropTypes.object,
+    menu: PropTypes.object,
   };
 
-  // constructor(props, context) {
-  //   super(props, context);
-  // }
-
   componentWillMount() {
-    if (this.context.onAppbarMount) {
+    if (this.context.onAppbarMount && !this.context.underFragment) {
       this.context.onAppbarMount(true);
     }
   }
 
   componentWillUnmount() {
-    if (this.context.onAppbarMount) {
+    if (this.context.onAppbarMount && !this.context.underFragment) {
       this.context.onAppbarMount(false);
     }
   }
+
+  onClickBack = this.props.onClickBack ? this.props.onClickBack : () => {
+    if (this.context.router) this.context.router.goBack();
+  };
+
+  onClickMenu = this.props.onClickMenu ? this.props.onClickMenu : () => {
+    if (this.context.menu) this.context.menu.open();
+  };
 
   render() {
     const { back, menu, lefts, rights, title, fixed,
       className, style, ...others } = this.props;
     if (fixed) styles.root.position = 'fixed';
 
-    /* eslint no-param-reassign: 0 */
-    const backButton = back === true ? <Button icon={<ArrowBack />} /> : back;
-    // if (typeof back === 'string') back = <Button clear label={back} />;
+    const backButton = back === true ? <Button icon={<ArrowBack />} onClick={this.onClickBack} /> : back;
 
-    const menuButton = menu === true ? <Button icon={<Menu />} /> : menu;
-    // if (typeof menu === 'string') menu = <Button clear label={menu} />;
+    const menuButton = menu === true ? <Button icon={<Menu />} onClick={this.onClickMenu} /> : menu;
 
     return (
       <Toolbar
@@ -79,13 +81,13 @@ export default class Appbar extends Component {
         <ToolbarGroup stand="right">
           {rights}
         </ToolbarGroup>
-        <ToolbarTittle title={title} />
         <ToolbarGroup>
           <ButtonGroup clear>
-            {backButton}
             {menuButton}
+            {backButton}
           </ButtonGroup>
         </ToolbarGroup>
+        <ToolbarTittle title={title} />
         <ToolbarGroup>
           {lefts}
         </ToolbarGroup>

@@ -1,4 +1,4 @@
-import React, { PropTypes as types } from 'react';
+import React, { PropTypes } from 'react';
 import cx from 'classnames';
 
 export default function ToolbarGroup({ className, stand, children, ...others }) {
@@ -13,9 +13,9 @@ export default function ToolbarGroup({ className, stand, children, ...others }) 
 }
 
 ToolbarGroup.propTypes = {
-  className: types.string,
-  children: types.node,
-  stand: types.oneOf(['left', 'right'])
+  className: PropTypes.string,
+  children: PropTypes.node,
+  stand: PropTypes.oneOf(['left', 'right'])
 };
 
 ToolbarGroup.defaultProps = {

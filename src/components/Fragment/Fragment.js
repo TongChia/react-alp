@@ -1,4 +1,4 @@
-import React, { Component, PropTypes as types } from 'react';
+import React, { Component, PropTypes } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import cx from 'classnames';
 import Paper from '../Paper';
@@ -6,14 +6,14 @@ import Paper from '../Paper';
 export default class Fragment extends Component {
 
   static propTypes = {
-    className: types.array,
-    children: types.node,
-    full: types.bool,
-    zDepth: types.number,
-    action: types.oneOf(['fade', 'slide']),
-    timeout: types.shape({
-      enter: types.number,
-      leave: types.number
+    className: PropTypes.array,
+    children: PropTypes.node,
+    full: PropTypes.bool,
+    zDepth: PropTypes.number,
+    action: PropTypes.oneOf(['fade', 'slide']),
+    timeout: PropTypes.shape({
+      enter: PropTypes.number,
+      leave: PropTypes.number
     })
   };
 
@@ -26,9 +26,14 @@ export default class Fragment extends Component {
     }
   };
 
-  constructor(props, context) {
-    super(props, context);
-    window.console.log(props);
+  static childContextTypes = {
+    underFragment: PropTypes.bool
+  };
+
+  getChildContext() {
+    return {
+      underFragment: true
+    };
   }
 
   render() {

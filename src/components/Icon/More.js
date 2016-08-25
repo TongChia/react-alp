@@ -1,4 +1,4 @@
-import React, { propTypes as types } from 'react';
+import React, { PropTypes } from 'react';
 import cx from 'classnames';
 import Icon from './Icon';
 
@@ -16,8 +16,8 @@ const More = ({ vertical, className, ...props }) => (
 );
 
 More.propTypes = {
-  className: types.string,
-  vertical: types.bool
+  className: PropTypes.string,
+  vertical: PropTypes.bool
 };
 
 export default More;

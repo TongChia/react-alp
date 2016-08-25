@@ -1,4 +1,4 @@
-import React, { createFragment, cloneElement, isValidElement, PropTypes as types } from 'react';
+import React, { createFragment, cloneElement, isValidElement, PropTypes } from 'react';
 import cx from 'classnames';
 
 export default function ListItem({ className, style, avatar,
@@ -41,16 +41,16 @@ ListItem.defaultProps = {
 };
 
 ListItem.propTypes = {
-  label: types.oneOfType([
-    types.string,
-    types.element
+  label: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element
   ]),
-  icon: types.element,
-  avatar: types.element
+  icon: PropTypes.element,
+  avatar: PropTypes.element
 };
 
 ListItem.contextTypes = {
-  router: types.object
+  router: PropTypes.object
 };
 
 // TODO: return <Link />, <a />
