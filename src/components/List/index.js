@@ -1,6 +1,5 @@
 import './style.styl';
-import List from './List.js';
-import ListItem from './ListItem.js';
 
-export default List;
-export {List, ListItem};
+export default from './List.js';
+export List from './List.js';
+export ListItem from './ListItem.js';

@@ -9,10 +9,10 @@ export default function Main({ children, subPage }) {
   return (
     <Layout>
       {children}
-      <Fragment action={'slide'} full>
+      <Appbar title="Home" rights={rights} back menu />
+      <Fragment hasHeader action={'fade'} full>
         {subPage}
       </Fragment>
-      <Appbar title="Home" rights={rights} back menu />
     </Layout>
   );
 }

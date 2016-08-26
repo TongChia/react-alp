@@ -23,7 +23,8 @@ export default class Layout extends Component {
     className: PropTypes.string,
     children: PropTypes.node,
     style: PropTypes.object,
-    forcePlatform: PropTypes.oneOf(['iOS', 'Android', 'winPhone', 'Web'])
+    forcePlatform: PropTypes.oneOf(['iOS', 'Android', 'winPhone', 'Web']),
+    hasHeader: PropTypes.bool,
   };
 
   static childContextTypes = {
@@ -37,7 +38,7 @@ export default class Layout extends Component {
     super(props);
     this.platform = this.props.forcePlatform || client.platform;
     this.state = {
-      hasHeader: false,
+      hasHeader: this.props.hasHeader || false,
       hasTabs: false
     };
   }
@@ -63,11 +64,11 @@ export default class Layout extends Component {
     const { className, style, children, ...others } = this.props;
     return (
       <div
+        {...others}
         className={classNames('alp-layout',
           { 'has-header': this.state.hasHeader, 'has-tabs': this.state.hasTabs },
           this.platform.toLowerCase(), className)}
         style={Object.assign({}, style)}
-        {...others}
       >
         {children}
       </div>

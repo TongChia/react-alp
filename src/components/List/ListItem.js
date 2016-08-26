@@ -24,11 +24,13 @@ export default function ListItem({ className, style, avatar,
   }:onClick;
 
   return (
-    <li className={cx(classNames, className)}
-        style={Object.assign({}, style)}
-        onClick={handleClick}
-        {...others}>
-      {icon||avatar}
+    <li
+      {...others}
+      className={cx(classNames, className)}
+      style={Object.assign({}, style)}
+      onClick={handleClick}
+    >
+      {icon || avatar}
       <div className="item-inner">
         {label}
         {children}

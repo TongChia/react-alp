@@ -74,9 +74,9 @@ export default class Appbar extends Component {
 
     return (
       <Toolbar
+        {...others}
         className={cx('alp-appbar', className)}
         style={Object.assign({}, style, styles.root)}
-        {...others}
       >
         <ToolbarGroup stand="right">
           {rights}

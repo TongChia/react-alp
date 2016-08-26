@@ -18,9 +18,9 @@ export default function Paper({ children, className, style,
   inline, round, circle, zDepth, ...others }) {
   return (
     <div
+      {...others}
       className={classNames('alp-paper', { inline: inline || circle, round, circle }, className)}
       style={Object.assign({}, style, zDepth2styles(zDepth))}
-      {...others}
     >
       {children}
     </div>

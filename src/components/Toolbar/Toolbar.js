@@ -24,8 +24,8 @@ export default class ToolBar extends Component {
     const { className, children, ...others } = this.props;
     return (
       <header
-        className={cx('alp-toolbar', className)}
         {...others}
+        className={cx('alp-toolbar', className)}
       >
         {children}
       </header>

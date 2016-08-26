@@ -5,9 +5,9 @@ import Item from './ListItem';
 export default function List({ className, style, children, items, noLine, ...others }) {
   return (
     <ul
+      {...others}
       className={cx('alp-list', { 'no-line': noLine }, className)}
       style={Object.assign({}, style)}
-      {...others}
     >
       {children}
       {items ? items.map((o, i) => <Item key={o.id || i} {...o} />) : null}

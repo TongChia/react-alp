@@ -34,9 +34,9 @@ export default class Avatar extends Component {
     } : {};
     return (
       <div
+        {...others}
         className={cx('alp-avatar', { 'no-round': !round }, className)}
         style={Object.assign({}, style, $style)}
-        {...others}
       >
         {children}
         <img src={src} alt="avatar" onError={this.handleBroken} />

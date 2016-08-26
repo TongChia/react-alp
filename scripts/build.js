@@ -96,7 +96,7 @@ var new_package_json = {
   author: package_json.author,
   version: package_json.version,
   description: package_json.description,
-  main: './index.js',
+  main: 'components/*',
   keywords: package_json.keywords,
   repository: package_json.repository,
   license: package_json.license,

@@ -4,8 +4,8 @@ import cx from 'classnames';
 export default function ToolbarGroup({ className, stand, children, ...others }) {
   return (
     <div
-      className={cx('alp-toolbar-group', `alp-toolbar-${stand}`, className)}
       {...others}
+      className={cx('alp-toolbar-group', `alp-toolbar-${stand}`, className)}
     >
       {children}
     </div>

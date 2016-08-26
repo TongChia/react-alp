@@ -11,6 +11,7 @@ export default class Fragment extends Component {
     full: PropTypes.bool,
     zDepth: PropTypes.number,
     action: PropTypes.oneOf(['fade', 'slide']),
+    hasHeader: PropTypes.bool,
     timeout: PropTypes.shape({
       enter: PropTypes.number,
       leave: PropTypes.number
@@ -36,21 +37,30 @@ export default class Fragment extends Component {
     };
   }
 
-  render() {
-    const { className, children, zDepth, full, action, timeout, ...others } = this.props;
+  componentWillReceiveProps() {
+    this._key = new Date().getTime();
+  }
 
+  render() {
+    const { className, children, zDepth, full, hasHeader, action, timeout, ...others } = this.props;
+    if (children) window.console.log(children.key);
     return (
       <ReactCSSTransitionGroup
+        {...others}
         className="alp-fragment"
         transitionName={`alp-fragment-${action}`}
         transitionEnterTimeout={timeout.enter}
         transitionLeaveTimeout={timeout.leave}
-        {...others}
       >
         {children ?
-          <Paper className={cx('alp-fragment-content', { full }, className)} zDepth={zDepth}>{children}</Paper> :
+          <Paper
+            className={cx('alp-fragment-content', { full, 'has-header': hasHeader }, className)}
+            zDepth={zDepth}
+          >{children}</Paper> :
           null}
       </ReactCSSTransitionGroup>
     );
   }
 }
+
+// TODO: 子页面切换时动画 (Key值变更时执行动画)

@@ -43,9 +43,13 @@ export default class ClientDetect {
     return this._system;
   }
 
-  isWechat() {}
+  isWechat() {
+    return /micromessenger/i.test(this.ua);
+  }
 
-  isCordova() {}
+  isCordova() {
+    return window.cordova || window.PhoneGap || window.phonegap;
+  }
 
   isElectronic() {}
 

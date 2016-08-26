@@ -36,9 +36,9 @@ const Icon = ({ className, style, children, size, src, alt, color, ...others }) 
 
   return (
     <span
+      {...others}
       className={cx(...classNames)}
       style={style}
-      {...others}
     >
       {children}
     </span>
