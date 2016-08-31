@@ -6,13 +6,6 @@ import ToolbarGroup from '../Toolbar/ToolbarGroup';
 import Button, { ButtonGroup } from '../Button';
 import { ArrowBack, Menu } from '../Icon';
 
-const styles = {
-  root: {
-  },
-  title: {
-  }
-};
-
 export default class Appbar extends Component {
 
   static propTypes = {
@@ -33,6 +26,10 @@ export default class Appbar extends Component {
     onClickMenu: PropTypes.func,
     lefts: PropTypes.element,
     rights: PropTypes.element
+  };
+
+  static defaultProps = {
+    style: {}
   };
 
   static contextTypes = {
@@ -64,19 +61,16 @@ export default class Appbar extends Component {
   };
 
   render() {
-    const { back, menu, lefts, rights, title, fixed,
-      className, style, ...others } = this.props;
-    if (fixed) styles.root.position = 'fixed';
+    const { back, menu, lefts, rights, title, fixed, style, className, ...others } = this.props;
+    if (fixed) style.position = 'fixed';
 
     const backButton = back === true ? <Button icon={<ArrowBack />} onClick={this.onClickBack} /> : back;
-
     const menuButton = menu === true ? <Button icon={<Menu />} onClick={this.onClickMenu} /> : menu;
 
     return (
       <Toolbar
         {...others}
         className={cx('alp-appbar', className)}
-        style={Object.assign({}, style, styles.root)}
       >
         <ToolbarGroup stand="right">
           {rights}
@@ -96,5 +90,5 @@ export default class Appbar extends Component {
   }
 }
 
-// TODO: back \ menu icon
-// TODO: Android platform
+// TODO: auto iOS & Android's icon [back, menu]
+// TODO: lalala

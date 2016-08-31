@@ -22,7 +22,6 @@ export default class Layout extends Component {
   static propTypes = {
     className: PropTypes.string,
     children: PropTypes.node,
-    style: PropTypes.object,
     forcePlatform: PropTypes.oneOf(['iOS', 'Android', 'winPhone', 'Web']),
     hasHeader: PropTypes.bool,
   };
@@ -61,17 +60,18 @@ export default class Layout extends Component {
   }
 
   render() {
-    const { className, style, children, ...others } = this.props;
+    const { className, children, ...others } = this.props;
     return (
       <div
         {...others}
         className={classNames('alp-layout',
           { 'has-header': this.state.hasHeader, 'has-tabs': this.state.hasTabs },
           this.platform.toLowerCase(), className)}
-        style={Object.assign({}, style)}
       >
         {children}
       </div>
     );
   }
 }
+
+// TODO: onScroll 事件 用于自动加载

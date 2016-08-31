@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import cx from 'classnames';
-import Item from './ListItem';
+import Item from './Item';
 
 export default function List({ className, style, children, items, noLine, ...others }) {
   return (

@@ -1,0 +1,26 @@
+.alp-input
+  display flex
+  line-height gutter
+  label
+    flex 0 0 100px
+    width 100px
+    color secondaryTextColor
+  input
+    // border none
+    flex 1
+    font-size inherit
+    outline-color primaryColor1
+
+    // reset input
+    padding: 0;
+    border: none;
+    background: none;
+
+.alp-input.error
+  input
+    outline-color red
+
+.alp-item .alp-input
+  input
+    padding gutterLess 0
+    margin - gutterLess 0

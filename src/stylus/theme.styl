@@ -2,7 +2,8 @@
  * default theme config file
  */
 
-@import "~google-material-color/dist/palette.styl"
+// @import "~google-material-color/dist/palette.styl"
+@import "../../node_modules/google-material-color/dist/palette.styl"
 
 // sizes
 fontSize ?= 16px
@@ -23,10 +24,8 @@ accentColor2 ?= palette('Pink', '700')
 accentColor3 ?= palette('Pink', '100')
 textColor ?= palette('Grey', '900')
 textInvertColor ?= white
-secondaryTextColor ?= palette('Grey', '700')
+secondaryTextColor ?= rgba(textColor, .5)
 alternateTextColor ?= palette('Blue Grey', '900')
 canvasColor ?= #303030
-borderColor ?= rgba(textColor, 0.3)
+borderColor ?= rgba(textColor, 0.2)
 disabledColor ?= rgba(textColor, 0.3)
-pickerHeaderColor ?= rgba(textColor, 0.12)
-clockCircleColor ?= rgba(textColor, 0.12)
