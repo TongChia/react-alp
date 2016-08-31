@@ -82,14 +82,17 @@ sed('-i', '// COMPONENTS', index_styl, buildStylusIndex);
 
 // build stylus
 if (!test('-d', buildCSSPath)) mkdir(buildCSSPath);
-if (exec('stylus ' + buildStylusIndex + ' -o ' + buildCSSPath + '/react-alp.css').code !== 0) {
+if (exec('stylus ' + buildStylusIndex + ' -o ' + path.join(buildCSSPath, '/react-alp.css')).code !== 0) {
   echo('Error: build stylus to css failed');
   exit(1);
 }
-if (exec('stylus -c ' + buildStylusIndex + ' -o ' + buildCSSPath + '/react-alp.min.css').code !== 0) {
+if (exec('stylus -c ' + buildStylusIndex + ' -o ' + path.join(buildCSSPath, '/react-alp.min.css')).code !== 0) {
   echo('Error: build stylus to min.css failed');
   exit(1);
 }
+
+// fix import path
+sed('-i', 'node_modules', '../node_modules', path.join(buildPath, 'stylus/theme.styl'));
 
 var new_package_json = {
   name: 'react-alp',

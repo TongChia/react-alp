@@ -2,7 +2,6 @@
  * default theme config file
  */
 
-// @import "~google-material-color/dist/palette.styl"
 @import "../../node_modules/google-material-color/dist/palette.styl"
 
 // sizes
@@ -22,10 +21,10 @@ primaryColor3 ?= palette('Teal', '100')
 accentColor1 ?= palette('Pink', '400')
 accentColor2 ?= palette('Pink', '700')
 accentColor3 ?= palette('Pink', '100')
-textColor ?= palette('Grey', '900')
+textColor ?= palette('Black', 'Text')
 textInvertColor ?= white
-secondaryTextColor ?= rgba(textColor, .5)
+secondaryTextColor ?= palette('Black', 'Secondary Text')
 alternateTextColor ?= palette('Blue Grey', '900')
 canvasColor ?= #303030
 borderColor ?= rgba(textColor, 0.2)
-disabledColor ?= rgba(textColor, 0.3)
+disabledColor ?= palette('Black', 'Disabled')
