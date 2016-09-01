@@ -1,6 +1,6 @@
 {
   "name": "react-alp-dev",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "react-alp - react components for cross-platform webapp",
   "main": "./src/*",
   "scripts": {
