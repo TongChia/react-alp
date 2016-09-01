@@ -42,4 +42,4 @@ export default class Validation {
   };
 }
 
-// TODO: 完善验证用户名规则
+// TODO: 用户名验证规则

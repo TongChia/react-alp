@@ -12,7 +12,7 @@ var srcPath = path.resolve(__dirname, '../src')
   , buildStylusIndex = path.join(buildPath, 'stylus/react-alp.styl')
   , buildCSSPath = path.join(buildPath, 'css')
   , babel = path.resolve(__dirname, '../node_modules/.bin/babel')
-  , tmp = tempdir();
+  , stylus = path.resolve(__dirname, '../node_modules/.bin/stylus');
 
 var package_json = require('../package.json');
 
@@ -31,6 +31,16 @@ if (!test('-f', babel)) {
   }
 }
 
+if (!test('-f', stylus)) {
+  echo('try globe stylus');
+  if (which('stylus')) {
+    babel = 'stylus';
+  } else{
+    echo('Sorry, this script requires stylus');
+    exit(1);
+  }
+}
+
 // clean build path
 rm('-rf', buildPath);
 mkdir(buildPath);
@@ -41,7 +51,6 @@ if(exec([babel, srcPath, '-d', buildPath].join(' ')).code !== 0){
   exit(1);
 }
 
-// exec(['copyfiles -u 1', srcPath + '/**/*.styl', path.join(srcPath, '**/*.md'), path.join(srcPath, 'resources/*'), buildPath].join(' '));
 cp('-Rf', path.join(srcPath, 'stylus'), path.join(buildPath));
 cp('-Rf', path.join(srcPath, 'resources'), path.join(buildPath));
 
@@ -52,9 +61,7 @@ var index_styl = '';
 //   '@import \"../../stylus/mixin.styl\"\r' +
 //   '@import \"../../stylus/global.styl\"\r\r';
 
-/**
- * 遍历组件
- */
+// 遍历组件
 ls(componentsPath).forEach(function(component) {
   var component_path = path.join(componentsPath, component);
   var build_component_path = path.join(buildComponentsPath, component);
@@ -82,11 +89,12 @@ sed('-i', '// COMPONENTS', index_styl, buildStylusIndex);
 
 // build stylus
 if (!test('-d', buildCSSPath)) mkdir(buildCSSPath);
-if (exec('stylus ' + buildStylusIndex + ' -o ' + path.join(buildCSSPath, '/react-alp.css')).code !== 0) {
+//if (exec(stylus + ' ' + buildStylusIndex + ' -o ' + path.join(buildCSSPath, '/react-alp.css')).code !== 0) {
+if (exec([stylus, buildStylusIndex, '-o', path.join(buildCSSPath, '/react-alp.css')].join(' ')).code !== 0) {
   echo('Error: build stylus to css failed');
   exit(1);
 }
-if (exec('stylus -c ' + buildStylusIndex + ' -o ' + path.join(buildCSSPath, '/react-alp.min.css')).code !== 0) {
+if (exec([stylus, '-c', buildStylusIndex, '-o', path.join(buildCSSPath, '/react-alp.min.css')].join(' ')).code !== 0) {
   echo('Error: build stylus to min.css failed');
   exit(1);
 }
@@ -112,3 +120,5 @@ var new_package_json = {
 fs.writeFileSync(path.join(buildPath, 'package.json'), JSON.stringify(new_package_json, null, 2));
 
 exit(0);
+
+// TODO: 使用非命令行的 babel 和 stylus;
